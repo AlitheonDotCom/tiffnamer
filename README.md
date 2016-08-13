@@ -13,11 +13,11 @@ You need `Ruby` v2.0.0 or newer and the `LibTIFF` toolchain:
 | -------- | ----------- | ------------- |
 | --image-dir | The directory of images to rename. | './images/' |
 | --dry-run | If true, emit commands that would have been run without making any changes. | 'false' |
-| --tag-index | The integer value of the tag value to fetch from each image. | 65007 |
+| --tag-index | The tag index (integer value) of the tag value to fetch from each image. | 65007 |
 
 ## Examples
 
-Perform a dry-run:
+Run the script in dry-run mode to preview changes:
 
 ```
 ./tiffnamer.rb --dry-run true
