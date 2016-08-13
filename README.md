@@ -1,6 +1,12 @@
 # tiffnamer
 Extracts tags from TIFF files and prepends their filenames with tag's value.
 
+## Requirements
+
+You need `Ruby` v2.0.0 or newer and the `LibTIFF` toolchain:
+* https://www.ruby-lang.org/en/
+* http://www.libtiff.org/tools.html
+
 ## Command Line Arguments
 
 | Argument | Description | Default Value |
