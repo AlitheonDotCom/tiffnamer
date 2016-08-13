@@ -1,0 +1,51 @@
+#
+# Project files
+#
+
+*.tiff
+
+#
+# Windows cruft
+#
+
+Thumbs.db
+
+#
+# OSX cruft
+#
+
+*.DS_Store
+
+#
+# VIM
+#
+
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+Session.vim
+.netrwhist
+*~
+tags
+
+#
+# Eclipse
+#
+
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+
+#
+# JetBrains IntelliJ
+#
+
+.idea/
