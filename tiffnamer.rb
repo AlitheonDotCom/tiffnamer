@@ -10,6 +10,7 @@ ARG_MAP = Hash[*ARGV]
 IMAGE_DIR = ARG_MAP['--image-dir'] || './images/'
 DRY_RUN = (ARG_MAP['--dry-run'] || 'false').downcase == 'true'
 TAG_INDEX = (ARG_MAP['--tag-index'] || '65007').to_i
+UNDO_MODE = (ARG_MAP['--undo'] || 'false').downcase == 'true'
 
 IMAGE_DIR += File::SEPARATOR unless IMAGE_DIR.end_with?(File::SEPARATOR)
 
@@ -31,12 +32,18 @@ Dir.glob(IMAGE_DIR + '*.tiff') do |filename|
 
     if (tag_val)
       prefix = tag_val.gsub(/[^\w\.]/, '-')
-      if (File.basename(filename).start_with?(prefix))
+      if (!UNDO_MODE &&  File.basename(filename).start_with?(prefix) ||
+           UNDO_MODE && !File.basename(filename).start_with?(prefix))
         puts "INFO: Skipping '#{basename}' because it has already been renamed"
         next
       end
 
-      new_filename = File.join(File.dirname(filename), prefix + '_' + File.basename(filename))
+      if (UNDO_MODE)
+        new_filename = filename.gsub(prefix + '_', '')
+      else
+        new_filename = File.join(File.dirname(filename), prefix + '_' + File.basename(filename))
+      end
+
       if (DRY_RUN)
         puts "mv \"#{filename}\" \"#{new_filename}\""
       else
